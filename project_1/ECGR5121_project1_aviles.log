@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.9.1)  19 OCT 2026 15:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.9.1)  19 OCT 2026 17:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -516,84 +516,87 @@ been already used, duplicate ignored
                    \relax 
 l.83 	\end{equation}
                      [1] [2]
-<photos/project1_fig1.jpg, id=90, 543.9522pt x 362.3136pt>
+<photos/project1_fig1.jpg, id=74, 543.9522pt x 362.3136pt>
 File: photos/project1_fig1.jpg Graphic file (type jpg)
 <use photos/project1_fig1.jpg>
-Package pdftex.def Info: photos/project1_fig1.jpg  used on input line 129.
-(pdftex.def)             Requested size: 341.43306pt x 227.42398pt.
-<photos/project1_fig2.jpg, id=91, 353.4003pt x 359.4228pt>
+Package pdftex.def Info: photos/project1_fig1.jpg  used on input line 131.
+(pdftex.def)             Requested size: 227.62204pt x 151.61229pt.
+<photos/project1_fig2.jpg, id=75, 353.4003pt x 359.4228pt>
 File: photos/project1_fig2.jpg Graphic file (type jpg)
 <use photos/project1_fig2.jpg>
-Package pdftex.def Info: photos/project1_fig2.jpg  used on input line 137.
-(pdftex.def)             Requested size: 398.33858pt x 405.15036pt.
+Package pdftex.def Info: photos/project1_fig2.jpg  used on input line 138.
+(pdftex.def)             Requested size: 199.16928pt x 202.56421pt.
+<photos/project1_fig3.jpg, id=76, 541.0614pt x 362.3136pt>
+File: photos/project1_fig3.jpg Graphic file (type jpg)
+<use photos/project1_fig3.jpg>
+Package pdftex.def Info: photos/project1_fig3.jpg  used on input line 147.
+(pdftex.def)             Requested size: 284.52756pt x 190.53813pt.
  [3
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.142     F
-           inally for the simulation setup our physics is defined under the ...
- <./photos/project1_fig1.jpg>]
-<photos/project1_fig3.jpg, id=99, 541.0614pt x 362.3136pt>
-File: photos/project1_fig3.jpg Graphic file (type jpg)
-<use photos/project1_fig3.jpg>
-Package pdftex.def Info: photos/project1_fig3.jpg  used on input line 152.
-(pdftex.def)             Requested size: 398.33858pt x 266.75339pt.
- [4
+l.151     \end{figure}
+                      
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.157     \subsection
-                     {Port 2} <./photos/project1_fig2.jpg>]
-<photos/project1_fig4.jpg, id=105, 390.4989pt x 359.4228pt>
+l.151     \end{figure}
+                       <./photos/project1_fig1.jpg> <./photos/project1_fig2.jpg
+>]
+<photos/project1_fig4.jpg, id=85, 390.4989pt x 359.4228pt>
 File: photos/project1_fig4.jpg Graphic file (type jpg)
 <use photos/project1_fig4.jpg>
-Package pdftex.def Info: photos/project1_fig4.jpg  used on input line 161.
-(pdftex.def)             Requested size: 398.33858pt x 366.66124pt.
- [5
+Package pdftex.def Info: photos/project1_fig4.jpg  used on input line 154.
+(pdftex.def)             Requested size: 284.52756pt x 261.89932pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+
+ []
+
+[4
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.166     \subsection
-                     {Perfect Magnetic Conductor} <./photos/project1_fig3.jpg>]
-<photos/project1_fig5.jpg, id=111, 540.0978pt x 361.35pt>
-File: photos/project1_fig5.jpg Graphic file (type jpg)
-<use photos/project1_fig5.jpg>
-Package pdftex.def Info: photos/project1_fig5.jpg  used on input line 170.
-(pdftex.def)             Requested size: 455.24408pt x 304.57954pt.
-
-Overfull \hbox (2.27618pt too wide) in paragraph at lines 170--171
- [] 
- []
-
-[6
+l.164     \end{equation}
+                        
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.175     \subsection
-                     {Running the Simulation} <./photos/project1_fig4.jpg>]
-<photos/project1_fig6.png, id=118, 919.93687pt x 555.57562pt>
+l.164     \end{equation}
+                         <./photos/project1_fig3.jpg> <./photos/project1_fig4.j
+pg>]
+<photos/project1_fig5.jpg, id=92, 540.0978pt x 361.35pt>
+File: photos/project1_fig5.jpg Graphic file (type jpg)
+<use photos/project1_fig5.jpg>
+Package pdftex.def Info: photos/project1_fig5.jpg  used on input line 174.
+(pdftex.def)             Requested size: 369.88582pt x 247.46812pt.
+<photos/project1_fig6.png, id=93, 919.93687pt x 555.57562pt>
 File: photos/project1_fig6.png Graphic file (type png)
 <use photos/project1_fig6.png>
-Package pdftex.def Info: photos/project1_fig6.png  used on input line 184.
+Package pdftex.def Info: photos/project1_fig6.png  used on input line 189.
 (pdftex.def)             Requested size: 398.33858pt x 240.57138pt.
-
-[7
+ [5
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.189 	T
-        he input and output port cut-lines are parallel to the input and out...
- <./photos/project1_fig5.jpg>] [8
+l.194 	C
+        learly, the antenna gain hits a maximum of $39.03$dBi, which is exac...
+ <./photos/project1_fig5.jpg>] [6
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.200 \end{document}
+l.214 \end{document}
                      <./photos/project1_fig6.png>]
 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -604,16 +607,16 @@ L3 programming layer <2026-08-10>
  ***********
 Package rerunfilecheck Info: File `ECGR5121_project1_aviles.out' has not change
 d.
-(rerunfilecheck)             Checksum: 464CFEF0CA1294E8CB1C157648587100;1930.
+(rerunfilecheck)             Checksum: 4C22D3CD9D297E7A5861F632BB8379D9;1380.
  ) 
 Here is how much of TeX's memory you used:
- 11498 strings out of 467441
- 187372 string characters out of 5407592
- 704289 words of memory out of 5000000
- 40601 multiletter control sequences out of 15000+600000
+ 11492 strings out of 467441
+ 187282 string characters out of 5407592
+ 704286 words of memory out of 5000000
+ 40597 multiletter control sequences out of 15000+600000
  631739 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,11n,93p,908b,558s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,11n,93p,563b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Owner\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1000.pk><C:/Users/Owner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/Owner/AppData/Local/Programs/MiKTeX/fonts/type1/publ
@@ -629,9 +632,9 @@ b><C:/Users/Owner/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb><C:/Users/Owner/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmsy7.pfb><C:/Users/Owner/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmtt10.pfb>
-Output written on ECGR5121_project1_aviles.pdf (9 pages, 1183018 bytes).
+Output written on ECGR5121_project1_aviles.pdf (7 pages, 1176351 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 135 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 179 PDF objects out of 1000 (max. 8388607)
+ 39 named destinations out of 1000 (max. 500000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 
