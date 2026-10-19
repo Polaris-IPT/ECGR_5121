@@ -1,0 +1,200 @@
+\documentclass[a4paper]{article}
+\usepackage{lab}
+\usepackage{enumitem}
+\usepackage{steinmetz}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	urlcolor=blue,
+	pdfnewwindow=true
+}
+
+\begin{document}
+
+\begin{titlepage}
+	\thispagestyle{fancy} %For the left header
+	\rhead{}
+	\chead{}
+	\lhead{Project \#1}
+	\rfoot{}
+	\cfoot{}
+	\lfoot{}
+	\renewcommand{\headrulewidth}{0pt} %Removes horizontal line
+	\begin{center}
+		\vspace*{1cm}
+		
+		\Large\textbf{University of North Carolina at Charlotte \\[1pt]
+			Department of Electrical and Computer Engineering} \\[2pt]
+		\vspace*{1cm}
+		
+		\noindent\rule{15cm}{0.4pt}
+		\vfill
+		\LARGE\textbf{Aircraft-Detection Radar - ECGR 5121} \\ [1pt]
+		\vspace{1cm}
+		Author: Miguel Aviles \\
+		Lab Partner: None	\\
+		Date: 10/18/2026 \\
+		\vspace{1.5cm}
+		
+		\vfill
+		\vfill
+	\end{center}
+\end{titlepage}
+
+\section{Objectives}
+	Design a $f = 10$ GHz monostatic radar to detect an aircraft at a range of $R_0 = 20$ km. The aircraft radar cross-section (RCS) varies with the azimuthal aspect angle relative to the radar. The below objectives provide a step-step framework for developing an applicable antenna for this application:
+	\begin{enumerate}
+		\item Plot the supplied aircraft RCS in dBsm versus azimuthal aspect angle using Cartesian coordinates.
+		\item Plot the supplied aircraft RCS in dBsm versus azimuthal aspect angle using polar coordinates.
+		\item Calculate and plot the required gain $G$ in dBi versus aircraft azimuthal aspect angle.
+		\item Determine the minimum antenna gain $G$ required to detect the aircraft for at least 90 percent of the supplied aspect angles.
+		\item Utilize the required gain derived above to determine the required reflector diameter $D$, the reflector radius $a$, and the focal length $f_p$ such that $\frac{f_p}{D} < 0.4$.
+		\item Design a parabolic reflector antenna with parameters such that the required gain $G$ is achieved utilizing the MATLAB Antenna Toolbox.
+	\end{enumerate}
+
+\section{Theoretical Background}
+	\subsection{Radar Wavelength and Frequency Relationship}
+	The operating frequency dictates the physical size of our antenna, since the wavelength is directly related to the frequency through the phase velocity $v_p$ of the medium, which in our case will constitute free-space phase velocity, also known as the speed of light $c$. The expression for operating wavelength is given below: 
+	\begin{equation}
+		\lambda = \frac{c}{f}
+	\end{equation}
+	The fundamental scaling of our antenna design will depend on the operating wavelength calculated, which depends on the operating frequency chosen. The expression above indicates that higher frequencies tend to lower the wavelength of operation, which therefore lowers the size of the antenna needed, which in most applications is ideal.
+	
+	\subsection{The Monostatic Radar Equation}
+	The core equation which defines all of the parameters needed for designing an effective antenna is the Monostatic Radar Equation, which is given below:
+	\begin{equation}
+		P_r = \frac{P_t G^2 \lambda^2 \sigma}{(4\pi)^3 R^4}
+	\end{equation}
+	Where:
+	\begin{itemize}
+		\item $P_r$ = Received Back-scatter Power (W)
+		\item $P_t$ = Peak Transmitted Power (W)
+		\item $G$ = Antenna Gain (dimensionless linear)
+		\item $\lambda$ = Operating Wavelength (m)
+		\item $\sigma$ = Target Radar Cross-Section ($m^2$)
+		\item $R$ = Distance from target (m)
+	\end{itemize}
+	The received back-scatter power $P_r$ from a target at a range $R$ depends on the transmitted power $P_t$, the antenna gain $G$, the operating wavelength $\lambda$, and the target radar cross-section $\sigma$. The target radar cross-section is also known as the RCS, which is the value which varies with azimuthal aspect angle relative to the radar. 
+	
+	To ensure the radar system can successfully detect an aircraft at the maximum design range $R_0$, the receieved power $P_r$ must equal to exceed a minimum detectable threshold. Therefore, assuming the operating wavelength $\lambda$, the transmitted power $P_t$ and the RCS over a given azimuthal angle range are known, then a required antenna gain can be derived from the Monostatic Radar Equation. The expression for the required gain is given below:
+	\begin{equation}
+		G_{req} = \sqrt{\frac{P_{rmin} (4\pi)^3 R_0^4}{P_t \lambda^2 \sigma}}
+	\end{equation}
+	The antenna gain $G$ is typically expressed as decibels relative to an isotropic antenna (dBi) on a logarithmic scale. The conversion from linear to logarithmic gain is given below:
+	\begin{equation}
+		G_{req (dBi)} = 10\log(G_{req})
+	\end{equation}
+	In general, it is difficult and unnecessary to define our antenna gain for covering 100 percent of potential aspect angles. Therefore, choosing a reasonable threshold (such as 90 percent) will minimize the gain requirements of our antenna while working nearly as effectively.
+	
+	\subsection{Parabolic Reflector Antenna Theory}
+	The parabolic reflector topology provides high directivity (and therefore high gain), which is perfect for our application. A parabolic reflector focuses EM waves produced by the point-source feed antenna into highly directive, planar EM waves. The maximum gain of a parabolic reflector antenna is given by the expression below:
+	\begin{equation}
+		G = \eta_{ap} (\frac{\pi D}{\lambda})^2
+	\end{equation}
+	Where:
+	\begin{itemize}
+		\item $G$ = Maximum Antenna Gain (dimensionless linear)
+		\item $\eta_{ap}$ = Aperture Efficiency (unitless)
+		\item $D$ = Physical Diameter of the reflector (m)
+		\item $\lambda$ = Operating Wavelength (m)
+	\end{itemize}
+	The aperture efficiency $\eta_{ap}$ is the ratio of effective aperture area $A_e$ to the physical aperture area $A_{phys}$. This quantity effectively accounts for various losses due to surface roughness, feed blockage and other non-idealities. 
+	
+	The required gain is calculated above utilizing the Equation 3, and therefore Equation 5 is rearranged to find the physical diameter of our parabolic reflector antenna, assuming a known aperature efficiency factor. The rearranged expression is given below:
+	\begin{equation}
+		D = \frac{\lambda}{\pi} \sqrt{\frac{G}{\eta_{ap}}}
+	\end{equation}
+	The radius of the reflector antenna is simply $a = \frac{D}{2}$. The required antenna gain $G$ is converted from logarithmic to linear through the below expression:
+	\begin{equation}
+		G_{req (linear)} = 10^{\frac{G_{req (dBi)}}{10}}
+	\end{equation}
+	The focal length (distance from feed antenna to the center of the reflector) is another important design parameter for parabolic antennas. In our application, the focal ratio is given as $\frac{f_p}{D} < 0.4$, which defines a deep reflector antenna, since the outer edge of the dish curves inward much more sharply, reducing the influence of outside noise. 
+	
+	Combining all of these parameters together, an appropriate parabolic reflector antenna which meets the required gain $G$ set by the Monostatic Radar equation can be designed using tools such as MATLAB's Antenna Toolbox easily.
+	
+\section{Simulation Method}
+	To begin, MATLAB is utilized in order to calculate all relevant parameters and plots. View the references section to access the MATLAB code and RCS data through Github. After setup, we define our initial parameters and conditions below:
+	\begin{itemize}
+		\item $P_t$ = $1000$W
+		\item $f$ = $10$GHz
+		\item $R_0$ = $20$km
+		\item $P_{rmin}$ = $1\cdot10^{-13}$W
+		\item $\eta_{ap}$ = $0.34$
+		\item $\frac{f_p}{D} < 0.4$
+	\end{itemize}
+    Now we construct our free-space model using these parameters. Under the "Model Builder" almost all areas of interest can be found, including the section for Parameters we defined above. Right clicking the "Geometry" section allows us to create a rectangle, where (w) defines the width in the x-direction, and (ht) defines the height in the y-direction. The rectangle was also centered at (0,0) as shown below:
+    \begin{figure}[H]
+    	\begin{center}
+    		\includegraphics[width=12cm]{photos/project1_fig1.jpg}
+    	\end{center}
+    	\caption{Cartesian Coordinates RCS vs. Aspect Angle}
+    	\label{Figure 1}
+    \end{figure}
+    Additionally, our free-space model requires a defined material to be made up of, which for our purposes can be chosen as air, which is effectively equivalent to free-space. The updated model can be seen below:
+    \begin{figure}[H]
+    	\begin{center}
+    		\includegraphics[width=14cm]{photos/project1_fig2.jpg}
+    	\end{center}
+    	\caption{Polar Coordinates RCS vs. Aspect Angle}
+    	\label{Figure 2}
+    \end{figure}
+    Finally for the simulation setup our physics is defined under the "Electromagnetic Waves, Frequency Domain (emw)" section. The electric field components will be in the z-direction, due to the selection "Out-of-plane vector" in the Settings for emw. The following physics will be added by right clicking the "Electromagnetic Waves, Frequency Domain (emw)" section:
+    \begin{itemize}
+    	\item Port 1
+    	\item Port 2
+    	\item Perfect Magnetic Conductor (PMC)
+    \end{itemize}
+    \subsection{Port 1}
+    Port 1 is the source port, where the EM wave with a wavelength of 1550nm will originate from as a plane wave. The port is turned ON. The "Electric Mode Field" is set as (0, 0, 1) where $E_z = 1$. $\beta = emw.k0 = \frac{2\pi}{\lambda}$ represents the general form of the wave vector, known as the propagation constant, and of course factors in our intended source wavelength $\lambda$. The port and it's settings are shown below:
+    \begin{figure}[H]
+    	\begin{center}
+    		\includegraphics[width=14cm]{photos/project1_fig3.jpg}
+    	\end{center}
+    	\caption{Cartesian Coordinates Required Gain vs. Aspect Angle}
+    	\label{Figure 3}
+    \end{figure}
+    \subsection{Port 2}
+    Port 2 is the output port, where the EM wave will be detected from. The port us turned OFF. The same settings for "Electric Mode Field" and $\beta$ are made for Port 2 as they were for Port 1. The port and it's settings are shown below:
+    \begin{figure}[H]
+    	\begin{center}
+    		\includegraphics[width=14cm]{photos/project1_fig4.jpg}
+    	\end{center}
+    	\caption{Polar Coordinates Required Gain vs. Aspect Angle}
+    	\label{Figure 4}
+    \end{figure}    
+    \subsection{Perfect Magnetic Conductor}
+    The Perfect Magnetic Conductor (PMC) represents the side boundaries, where the magnetic fields are orthogonal to the surface of the PMC, while the electric fields are tangent. These properties are inherent to PMC and fall in line with the electric field $\vec{E}$ in the z-direction, EM wave propagation in the y-direction, and consequent magnetic field $\vec{H}$ in the x-direction. The magnetic field will therefore remain orthogonal to the PMC (only in x-direction), just like in the free-space, meaning the PMC causes no reflections and thus unintended results. The PMC and it's settings are shown below:
+    \begin{figure}[H]
+    	\begin{center}
+    		\includegraphics[width=16cm]{photos/project1_fig5.jpg}
+    	\end{center}
+    	\caption{Parabolic Reflector Sketch}
+    	\label{Figure 5}
+    \end{figure}
+    \subsection{Running the Simulation}
+    The simulation must be meshed to determine all of the points to be considered in our numerical simulation. The more points considered, the longer the simulation will take, depending on the complexity of the simulation. Since our simulation is relatively simple, the extremely fine size for our mesh is chosen. The mesh is shown below:
+
+    To run the simulation, the "Study" tab under "Model Builder" is selected, and "Step 1: Frequency Domain" is clicked. The frequency unit is selected as THz since our wavelength corresponds to a THz frequency EM wave in free-space. The Frequencies are set to ($c_{const}/lambda$), where $c_{const}$ is the speed of an EM wave in free-space, and thus centers our frequency of study at 193.5 THz. The Compute button is clicked, and our simulation runs, with a variety of results now made available under the "Study" tab for analysis.
+    
+\section{Results}
+	To conjure the EM fields and important parameters, 2D cut-lines are added parallel to propagation, and parallel to the input and output ports. Utilizing these cut-lines, S-parameters, power, etc. can be extracted from the simulation. The propagation direction cut-line is shown below:
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=14cm]{photos/project1_fig6.png}
+		\end{center}
+		\caption{Directivity of the Designed Parabolic Reflector Antenna}
+		\label{Figure 7}
+	\end{figure} 
+	The input and output port cut-lines are parallel to the input and output ports, with each cut-line made close to it's respective port. The input and output port cut-lines are shown below:
+	
+\section{Conclusions}
+	All objectives were achieved, with a system model constructed in COMSOL which replicated a portion of free-space, with ports for generation and detection of EM waves. A simple plane wave was implemented and shown to propagate through free-space with no reflections as expected by the boundary conditions imposed initially. Surface and Line graphs of the E-field present in our EM wave were produced and evaluated to confirm the properties and behaviors of our modeled plane wave, including the magnitude and phase of the said E-fields. PMC was the initial boundary condition utilized, but PEC was also shown to be able to produce the exact same results as PMC with the right modifications. Without said modifications, unintended and complex results would occur due to the large amount of reflections caused by the PEC on the incident wave from the source. 
+	
+\section{References}
+    Project 1: Aircraft-Detection Radar Requirements PDF \\
+    ECGR 5121 Github Repo: Contains MATLAB code and RCS Excel data \\
+    \url{https://github.com/Polaris-IPT/ECGR_5121}
+
+
+\end{document}
